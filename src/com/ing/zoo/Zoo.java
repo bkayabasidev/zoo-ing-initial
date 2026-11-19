@@ -22,7 +22,8 @@ public class Zoo {
         animals.add(new Pig("dora"));
         animals.add(new Tiger("wally"));
         animals.add(new Zebra("marty"));
-
+        animals.add(new Panda("claus"));
+        animals.add(new Parrot("polly"));
         Scanner scanner = new Scanner(System.in);
 
         while (true)
