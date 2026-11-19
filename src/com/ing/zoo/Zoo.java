@@ -1,5 +1,7 @@
 package com.ing.zoo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Zoo {
@@ -11,16 +13,12 @@ public class Zoo {
         commands[2] = "give meat";
         commands[3] = "perform trick";
 
-        Lion henk = new Lion();
-        henk.name = "henk";
-        Hippo elsa = new Hippo();
-        elsa.name = "elsa";
-        Pig dora = new Pig();
-        dora.name = "dora";
-        Tiger wally = new Tiger();
-        wally.name = "wally";
-        Zebra marty = new Zebra();
-        marty.name = "marty";
+        List<Animal> animals = new ArrayList<>();
+        animals.add(new Lion("henk"));
+        animals.add(new Hippo("elsa"));
+        animals.add(new Pig("dora"));
+        animals.add(new Tiger("wally"));
+        animals.add(new Zebra("marty"));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -39,13 +37,85 @@ public class Zoo {
                 break;
             }
 
-            if(input.equals(commands[0] + " henk"))
+            // Split the input into the command and an optional animal name.
+            String command = null;
+            String name = null;
+            for (String c : commands)
             {
-                henk.sayHello();
+                if (input.equals(c))
+                {
+                    command = c;
+                    break;
+                }
+                if (input.startsWith(c + " "))
+                {
+                    command = c;
+                    name = input.substring(c.length() + 1).trim();
+                    break;
+                }
+            }
+
+            if (command == null)
+            {
+                System.out.println("Unknown command: " + input);
+                continue;
+            }
+
+            // Pick the targets: one named animal, or every animal.
+            List<Animal> targets = new ArrayList<>();
+            if (name == null)
+            {
+                targets.addAll(animals);
             }
             else
             {
-                System.out.println("Unknown command: " + input);
+                for (Animal animal : animals)
+                {
+                    if (animal.name.equals(name))
+                    {
+                        targets.add(animal);
+                    }
+                }
+                if (targets.isEmpty())
+                {
+                    System.out.println("Unknown animal: " + name);
+                    continue;
+                }
+            }
+
+            for (Animal animal : targets)
+            {
+                System.out.print(animal.name + ": ");
+                if (command.equals(commands[0]))
+                {
+                    animal.sayHello();
+                }
+                else if (command.equals(commands[1]))
+                {
+                    if (animal instanceof Herbivore)
+                    {
+                        ((Herbivore) animal).eatLeaves();
+                    }
+                    else
+                    {
+                        System.out.println("does not eat leaves");
+                    }
+                }
+                else if (command.equals(commands[2]))
+                {
+                    if (animal instanceof Carnivore)
+                    {
+                        ((Carnivore) animal).eatMeat();
+                    }
+                    else
+                    {
+                        System.out.println("does not eat meat");
+                    }
+                }
+                else if (command.equals(commands[3]))
+                {
+                    animal.performTrick();
+                }
             }
         }
 
