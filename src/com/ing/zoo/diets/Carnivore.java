@@ -1,4 +1,4 @@
-package com.ing.zoo;
+package com.ing.zoo.diets;
 
 public interface Carnivore {
     void eatMeat();

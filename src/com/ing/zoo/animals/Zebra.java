@@ -1,4 +1,6 @@
-package com.ing.zoo;
+package com.ing.zoo.animals;
+
+import com.ing.zoo.diets.Herbivore;
 
 public class Zebra extends Animal implements Herbivore {
     public Zebra(String name)

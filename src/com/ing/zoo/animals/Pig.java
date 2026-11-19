@@ -1,18 +1,27 @@
-package com.ing.zoo;
+package com.ing.zoo.animals;
+
+import com.ing.zoo.diets.Omnivore;
 
 import java.util.Random;
 
-public class Tiger extends Animal implements Carnivore {
-    public Tiger(String name)
+public class Pig extends Animal implements Omnivore {
+    public Pig(String name)
     {
         super(name);
-        helloText = "rraaarww";
+        helloText = "splash";
+    }
+
+    @Override
+    public void eatLeaves()
+    {
+        eatText = "munch munch oink";
+        System.out.println(eatText);
     }
 
     @Override
     public void eatMeat()
     {
-        eatText = "nomnomnom oink wubalubadubdub";
+        eatText = "nomnomnom oink thx";
         System.out.println(eatText);
     }
 
@@ -29,11 +38,11 @@ public class Tiger extends Animal implements Carnivore {
         int rnd = random.nextInt(2);
         if(rnd == 0)
         {
-            trick = "jumps in tree";
+            trick = "rolls in the mud";
         }
         else
         {
-            trick = "scratches ears";
+            trick = "runs in circles";
         }
         System.out.println(trick);
     }

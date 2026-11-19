@@ -1,5 +1,8 @@
 package com.ing.zoo;
 
+import com.ing.zoo.animals.*;
+import com.ing.zoo.diets.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
