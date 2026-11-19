@@ -16,8 +16,12 @@ public abstract class Animal {
         System.out.println(helloText);
     }
 
+    public boolean canPerformTrick()
+    {
+        return false;
+    }
+
     public void performTrick()
     {
-        System.out.println("does not know any tricks");
     }
 }

@@ -24,6 +24,12 @@ public class Pig extends Animal implements Omnivore {
     }
 
     @Override
+    public boolean canPerformTrick()
+    {
+        return true;
+    }
+
+    @Override
     public void performTrick()
     {
         Random random = new Random();

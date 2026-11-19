@@ -17,6 +17,12 @@ public class Tiger extends Animal implements Carnivore {
     }
 
     @Override
+    public boolean canPerformTrick()
+    {
+        return true;
+    }
+
+    @Override
     public void performTrick()
     {
         Random random = new Random();

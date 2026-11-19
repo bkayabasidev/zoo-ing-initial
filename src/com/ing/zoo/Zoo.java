@@ -115,36 +115,46 @@ public class Zoo {
 
             for (Animal animal : targets)
             {
-                System.out.print(animal.name + ": ");
                 if (command.equals(commands[0]))
                 {
+                    System.out.print(animal.name + ": ");
                     animal.sayHello();
                 }
                 else if (command.equals(commands[1]))
                 {
                     if (animal instanceof Herbivore)
                     {
+                        System.out.print(animal.name + ": ");
                         ((Herbivore) animal).eatLeaves();
                     }
-                    else
+                    else if (name != null)
                     {
-                        System.out.println("does not eat leaves");
+                        System.out.println(animal.name + " does not eat leaves");
                     }
                 }
                 else if (command.equals(commands[2]))
                 {
                     if (animal instanceof Carnivore)
                     {
+                        System.out.print(animal.name + ": ");
                         ((Carnivore) animal).eatMeat();
                     }
-                    else
+                    else if (name != null)
                     {
-                        System.out.println("does not eat meat");
+                        System.out.println(animal.name + " does not eat meat");
                     }
                 }
                 else if (command.equals(commands[3]))
                 {
-                    animal.performTrick();
+                    if (animal.canPerformTrick())
+                    {
+                        System.out.print(animal.name + ": ");
+                        animal.performTrick();
+                    }
+                    else if (name != null)
+                    {
+                        System.out.println(animal.name + " does not know any tricks");
+                    }
                 }
             }
         }
