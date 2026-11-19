@@ -37,6 +37,36 @@ public class Zoo {
                 break;
             }
 
+            if (input.equals("help"))
+            {
+                System.out.println("Available commands:");
+                for (String c : commands)
+                {
+                    System.out.println("  " + c + " [name]");
+                }
+                System.out.println("  help");
+                System.out.println("  exit");
+                System.out.println("Animals:");
+                for (Animal animal : animals)
+                {
+                    String diet;
+                    if (animal instanceof Omnivore)
+                    {
+                        diet = "omnivore";
+                    }
+                    else if (animal instanceof Carnivore)
+                    {
+                        diet = "carnivore";
+                    }
+                    else
+                    {
+                        diet = "herbivore";
+                    }
+                    System.out.println("  " + animal.name + " (" + animal.getClass().getSimpleName() + ", " + diet + ")");
+                }
+                continue;
+            }
+
             // Split the input into the command and an optional animal name.
             String command = null;
             String name = null;
