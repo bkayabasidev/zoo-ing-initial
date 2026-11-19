@@ -23,16 +23,32 @@ public class Zoo {
         marty.name = "marty";
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Voer uw command in: ");
 
-        String input = scanner.nextLine();
-        if(input.equals(commands[0] + " henk"))
+        while (true)
         {
-            henk.sayHello();
+            System.out.print("Voer uw command in: ");
+
+            if (!scanner.hasNextLine())
+            {
+                break;
+            }
+            String input = scanner.nextLine().trim();
+
+            if (input.equals("exit") || input.equals("quit"))
+            {
+                break;
+            }
+
+            if(input.equals(commands[0] + " henk"))
+            {
+                henk.sayHello();
+            }
+            else
+            {
+                System.out.println("Unknown command: " + input);
+            }
         }
-        else
-        {
-            System.out.println("Unknown command: " + input);
-        }
+
+        scanner.close();
     }
 }
